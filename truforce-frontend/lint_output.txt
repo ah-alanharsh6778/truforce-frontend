@@ -1,0 +1,112 @@
+
+> truforce-frontend@0.0.0 lint
+> eslint .
+
+
+E:\truforce-frontend\truforce-frontend\src\components\customer\AddCustomerModal.jsx
+  43:8  warning  React Hook useEffect has a missing dependency: 'initialForm'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+E:\truforce-frontend\truforce-frontend\src\components\layout\MobileBottomNav.jsx
+  6:11  error  'role' is assigned a value but never used  no-unused-vars
+
+E:\truforce-frontend\truforce-frontend\src\hooks\usePagination.js
+  7:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+   5 |
+   6 |     useEffect(() => {
+>  7 |         setCurrentPage(1);
+     |         ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+   8 |     }, [filters]);
+   9 |
+  10 |     const filteredItems = useMemo(() => {  react-hooks/set-state-in-effect
+
+E:\truforce-frontend\truforce-frontend\src\pages\dashboard\DashBoardPage.jsx
+  83:8  warning  React Hook useEffect has a missing dependency: 'loadDashboard'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+E:\truforce-frontend\truforce-frontend\src\pages\dashboard\FieldDashboard.jsx
+    2:69  error    'Clock' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+   72:8   warning  React Hook useEffect has a missing dependency: 'loadDashboardData'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       react-hooks/exhaustive-deps
+  109:8   warning  React Hook useEffect has a missing dependency: 'sendLiveLocation'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react-hooks/exhaustive-deps
+  234:51  error    Error: Cannot call impure function during render
+
+`Date.now` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component happens to re-render. (https://react.dev/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent).
+
+  232 |
+  233 |                                 if(today === itemDate) dateText = "Today";
+> 234 |                                 else if (new Date(Date.now() + 86400000).toDateString() === itemDate) dateText = "Tomorrow";
+      |                                                   ^^^^^^^^^^ Cannot call impure function
+  235 |                                 else if (new Date(item.followUpDate) < new Date()) dateText = "Overdue";
+  236 |
+  237 |                                 return (  react-hooks/purity
+
+E:\truforce-frontend\truforce-frontend\src\pages\expense\ExpenseScreen.jsx
+   1:8   error  'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       no-unused-vars
+   2:58  error  'TrendingUp' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  no-unused-vars
+  11:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+   9 |     useEffect(() => {
+  10 |         const savedExpenses = JSON.parse(localStorage.getItem('expenses') || '[]');
+> 11 |         setExpenses(savedExpenses);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  12 |     }, []);
+  13 |
+  14 |     const submitExpense = () => {  react-hooks/set-state-in-effect
+
+E:\truforce-frontend\truforce-frontend\src\pages\profile\profilePage.jsx
+   1:8  error  'React' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   no-unused-vars
+  27:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  25 |
+  26 |     useEffect(() => {
+> 27 |         setUserData({
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  28 |             name: localStorage.getItem("name") || "Harsh Singh",
+  29 |             email: localStorage.getItem("email") || "harsh.singh@truforce.com",
+  30 |             role: (localStorage.getItem("role") || "ADMIN").toUpperCase(),  react-hooks/set-state-in-effect
+
+E:\truforce-frontend\truforce-frontend\src\pages\summary\DailySummaryPage.jsx
+  66:8  warning  React Hook useEffect has a missing dependency: 'loadSummaries'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+E:\truforce-frontend\truforce-frontend\src\pages\tracking\TrackingPage.jsx
+   3:5   error  'MapPin' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         no-unused-vars
+   3:13  error  'Search' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         no-unused-vars
+  10:12  error  'error' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  13:20  error  'setSearch' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             no-unused-vars
+  26:18  error  'error' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+  33:23  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  31 |     }
+  32 |
+> 33 |     useEffect(() => { loadLocations(); }, []);
+     |                       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  34 |
+  35 |     // 2. Form Handlers (IMPORTANT: These must be here)
+  36 |     const handleChange = (e) => {  react-hooks/set-state-in-effect
+  73:18  error  'error' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+
+✖ 21 problems (16 errors, 5 warnings)
+
